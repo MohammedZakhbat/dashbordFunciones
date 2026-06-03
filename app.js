@@ -1,155 +1,288 @@
 
-const cardClass = "bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6";
-const inputClass = "w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3";
-const buttonClass = "w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition";
-const resultClass = "mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center";
 
+const contarCaracteres = texto => texto.length;
 
+const recortarTexto = (texto, n) => texto.slice(0, n);
 
-const contarCaracteres = t => t.length;
+const separarTexto = (texto, separador) => texto.split(separador);
 
-const recortarTexto = (t, n) => t.slice(0, n);
+const repetirTexto = (texto, veces) => Array(veces).fill(texto).join(" ");
 
-const esPalindromo = t =>
-    t.toLowerCase().replace(/\s/g, '') ===
-    t.toLowerCase().replace(/\s/g, '').split('').reverse().join('');
+const invertirTexto = texto => texto.split("").reverse().join("");
 
-const validarEmail = e =>
-    /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e);
+const contarPalabra = (texto, palabra) =>
+  texto.toLowerCase().split(palabra.toLowerCase()).length - 1;
+
+const esPalindromo = texto => {
+  const limpio = texto.toLowerCase().replace(/\s/g, "");
+  return limpio === limpio.split("").reverse().join("");
+};
+
+const eliminarPatron = (texto, patron) =>
+  texto.replace(new RegExp(patron, "gi"), "");
 
 const numeroAleatorio = () =>
-    Math.floor(Math.random() * 100) + 501;
+  Math.floor(Math.random() * 100) + 501;
 
-const convertirTemperatura = (g, t) =>
-    t === 'C'
-        ? (g * 9 / 5 + 32) + ' °F'
-        : ((g - 32) * 5 / 9).toFixed(2) + ' °C';
-
-const invertirTexto = t =>
-    t.split('').reverse().join('');
-
-const contarPalabra = (t, p) =>
-    t.split(' ')
-        .filter(x => x.toLowerCase() === p.toLowerCase())
-        .length;
-
-const eliminarPatron = (t, p) =>
-    t.replaceAll(p, '');
-
-const binarioDecimal = n =>
-    parseInt(n, 2);
-
-const calcularAnios = d =>
-    new Date().getFullYear() - new Date(d).getFullYear();
-
-const contarLetras = t => {
-    let v = 0, c = 0;
-
-    t.toLowerCase().split('').forEach(l =>
-        /[aeiou]/.test(l)
-            ? v++
-            : /[a-z]/.test(l)
-                ? c++
-                : 0);
-
-    return `Vocales:${v} Consonantes:${c}`;
+const convertirTemperatura = (valor, tipo) => {
+  if (tipo === "C") {
+    return `${(valor * 9 / 5 + 32).toFixed(2)} °F`;
+  }
+  return `${((valor - 32) * 5 / 9).toFixed(2)} °C`;
 };
 
-const validarNombre = n =>
-    /^[A-Za-zÀ-ÿ\s']+$/.test(n);
-
-const elevarCuadrado = a =>
-    a.split(',').map(n => n * n);
-
-const mayorMenor = a => {
-    a = a.split(',').map(Number);
-    return Math.max(...a) + " / " + Math.min(...a);
+const binarioDecimal = valor => {
+  if (/^[01]+$/.test(valor)) {
+    return parseInt(valor, 2);
+  }
+  return Number(valor).toString(2);
 };
 
-const paresImpares = a => {
-    a = a.split(',').map(Number);
+const calcularAnios = fecha => {
+  const hoy = new Date();
+  const nacimiento = new Date(fecha);
 
-    return "Pares:" + a.filter(n => n % 2 === 0)
-        + " | Impares:" + a.filter(n => n % 2 !== 0);
+  let edad = hoy.getFullYear() - nacimiento.getFullYear();
+
+  const mes = hoy.getMonth() - nacimiento.getMonth();
+
+  if (
+    mes < 0 ||
+    (mes === 0 && hoy.getDate() < nacimiento.getDate())
+  ) {
+    edad--;
+  }
+
+  return `${edad} años`;
 };
 
-const ordenarArray = a =>
-    a.split(',').map(Number).sort((x, y) => x - y);
+const vocalesConsonantes = texto => {
+  const vocales = (texto.match(/[aeiouáéíóú]/gi) || []).length;
+  const consonantes = (texto.match(/[bcdfghjklmnñpqrstvwxyz]/gi) || []).length;
 
-const eliminarDuplicados = a =>
-    [...new Set(a.split(','))];
-
-const promedio = a => {
-    a = a.split(',').map(Number);
-    return a.reduce((x, y) => x + y, 0) / a.length;
+  return `Vocales: ${vocales}, Consonantes: ${consonantes}`;
 };
 
-const repetirTexto = (t, n) =>
-    t.repeat(n);
+const validarNombre = nombre =>
+  /^[A-Za-zÀ-ÿ\s']+$/.test(nombre.trim());
 
-const separarTexto = (t, s) =>
-    t.split(s);
+const validarEmail = email =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-const run1 = () => r1.textContent = contarCaracteres(c1.value);
-const run2 = () => r2.textContent = recortarTexto(c2.value, +c2n.value);
+const cuadradoArray = arr =>
+  arr.map(num => num ** 2);
 
-const run3 = () => r3.textContent =
-    esPalindromo(c3.value)
-        ? "Sí ✅"
-        : "No ❌";
+const mayorMenor = arr =>
+  [Math.max(...arr), Math.min(...arr)];
 
-const run4 = () => r4.textContent =
-    validarEmail(c4.value)
-        ? "Email válido ✅"
-        : "Email inválido ❌";
+const paresImpares = arr => ({
+  pares: arr.filter(n => n % 2 === 0),
+  impares: arr.filter(n => n % 2 !== 0)
+});
 
-const run5 = () => r5.textContent = numeroAleatorio();
+const ordenarArray = arr => ({
+  asc: [...arr].sort((a, b) => a - b),
+  desc: [...arr].sort((a, b) => b - a)
+});
 
-const run6 = () => r6.textContent =
-    convertirTemperatura(+c6.value, c6t.value);
+const eliminarDuplicados = arr =>
+  [...new Set(arr)];
 
-const run7 = () => r7.textContent = invertirTexto(c7.value);
+const promedio = arr =>
+  arr.reduce((acc, n) => acc + n, 0) / arr.length;
 
-const run8 = () => r8.textContent =
-    contarPalabra(c8.value, c8p.value);
 
-const run9 = () => r9.textContent =
-    eliminarPatron(c9.value, c9p.value);
 
-const run10 = () => r10.textContent =
-    binarioDecimal(c10.value);
+const convertirArrayNumeros = texto =>
+  texto.split(",").map(n => Number(n.trim()));
 
-const run11 = () => r11.textContent =
-    calcularAnios(c11.value) + " años";
 
-const run12 = () => r12.textContent =
-    contarLetras(c12.value);
 
-const run13 = () => r13.textContent =
-    validarNombre(c13.value)
-        ? "Nombre válido ✅"
-        : "Nombre inválido ❌";
+document.querySelector("#btn1").addEventListener("click", () => {
+  const texto = document.querySelector("#c1").value.trim();
+  document.querySelector("#r1").textContent = contarCaracteres(texto);
+});
 
-const run14 = () => r14.textContent =
-    elevarCuadrado(c14.value);
+document.querySelector("#btn2").addEventListener("click", () => {
+  const texto = document.querySelector("#c2").value;
+  const n = Number(document.querySelector("#c2n").value);
+  document.querySelector("#r2").textContent = recortarTexto(texto, n);
+});
 
-const run15 = () => r15.textContent =
-    mayorMenor(c15.value);
+document.querySelector("#btn3").addEventListener("click", () => {
+  const texto = document.querySelector("#c3").value;
+  const sep = document.querySelector("#c3s").value;
+  document.querySelector("#r3").textContent =
+    JSON.stringify(separarTexto(texto, sep));
+});
 
-const run16 = () => r16.textContent =
-    paresImpares(c16.value);
+document.querySelector("#btn4").addEventListener("click", () => {
+  const texto = document.querySelector("#c4").value;
+  const veces = Number(document.querySelector("#c4n").value);
+  document.querySelector("#r4").textContent =
+    repetirTexto(texto, veces);
+});
 
-const run17 = () => r17.textContent =
-    ordenarArray(c17.value);
+document.querySelector("#btn5").addEventListener("click", () => {
+  document.querySelector("#r5").textContent =
+    invertirTexto(document.querySelector("#c5").value);
+});
 
-const run18 = () => r18.textContent =
-    eliminarDuplicados(c18.value);
+document.querySelector("#btn6").addEventListener("click", () => {
+  const texto = document.querySelector("#c6").value;
+  const palabra = document.querySelector("#c6p").value;
+  document.querySelector("#r6").textContent =
+    contarPalabra(texto, palabra);
+});
 
-const run19 = () => r19.textContent =
-    promedio(c19.value);
+document.querySelector("#btn7").addEventListener("click", () => {
+  const texto = document.querySelector("#c7").value.trim();
 
-const run20 = () => r20.textContent =
-    repetirTexto(c20.value, +c20n.value);
+  if (!texto) {
+    document.querySelector("#r7").textContent =
+      "Ingrese una palabra";
+    return;
+  }
 
-const run21 = () => r21.textContent =
-    separarTexto(c21.value, ' ');
+  const resultado = esPalindromo(texto);
+
+  document.querySelector("#r7").textContent =
+    resultado
+      ? "Es un palíndromo ✔️"
+      : "No es un palíndromo ❌";
+});
+
+document.querySelector("#btn8").addEventListener("click", () => {
+  const texto = document.querySelector("#c8").value;
+  const patron = document.querySelector("#c8p").value;
+  document.querySelector("#r8").textContent =
+    eliminarPatron(texto, patron);
+});
+
+document.querySelector("#btn9").addEventListener("click", () => {
+  document.querySelector("#r9").textContent =
+    numeroAleatorio();
+});
+
+document.querySelector("#btn10").addEventListener("click", () => {
+  const valor = Number(document.querySelector("#c10").value);
+  const tipo = document.querySelector("#c10t").value;
+
+  document.querySelector("#r10").textContent =
+    convertirTemperatura(valor, tipo);
+});
+
+document.querySelector("#btn11").addEventListener("click", () => {
+  const valor = document.querySelector("#c11").value.trim();
+
+  document.querySelector("#r11").textContent =
+    binarioDecimal(valor);
+});
+
+document.querySelector("#btn12").addEventListener("click", () => {
+  const fecha = document.querySelector("#c12").value;
+
+  document.querySelector("#r12").textContent =
+    calcularAnios(fecha);
+});
+
+document.querySelector("#btn13").addEventListener("click", () => {
+  document.querySelector("#r13").textContent =
+    vocalesConsonantes(document.querySelector("#c13").value);
+});
+
+document.querySelector("#btn14").addEventListener("click", () => {
+  document.querySelector("#r14").textContent =
+    validarNombre(document.querySelector("#c14").value);
+});
+
+document.querySelector("#btn15").addEventListener("click", () => {
+  document.querySelector("#r15").textContent =
+    validarEmail(document.querySelector("#c15").value);
+});
+
+document.querySelector("#btn16").addEventListener("click", () => {
+  const arr = convertirArrayNumeros(
+    document.querySelector("#c16").value
+  );
+
+  document.querySelector("#r16").textContent =
+    JSON.stringify(cuadradoArray(arr));
+});
+
+document.querySelector("#btn17").addEventListener("click", () => {
+  const arr = convertirArrayNumeros(
+    document.querySelector("#c17").value
+  );
+
+  const resultado = mayorMenor(arr);
+
+  document.querySelector("#r17").textContent =
+    `Número mayor: ${resultado[0]} | Número menor: ${resultado[1]}`;
+});
+
+document.querySelector("#btn18").addEventListener("click", () => {
+  const arr = convertirArrayNumeros(
+    document.querySelector("#c18").value
+  );
+
+  if (arr.length === 0) {
+    document.querySelector("#r18").textContent =
+      "Ingrese números válidos";
+    return;
+  }
+
+  const resultado = paresImpares(arr);
+
+  const paresText =
+    resultado.pares.length > 0
+      ? resultado.pares.join(", ")
+      : "No hay números pares";
+
+  const imparesText =
+    resultado.impares.length > 0
+      ? resultado.impares.join(", ")
+      : "No hay números impares";
+
+  document.querySelector("#r18").textContent =
+    `Pares: ${paresText} | Impares: ${imparesText}`;
+});
+document.querySelector("#btn19").addEventListener("click", () => {
+  const arr = convertirArrayNumeros(c19.value);
+
+  if (arr.length === 0) {
+    document.querySelector("#r19").textContent =
+      "Ingrese números válidos";
+    return;
+  }
+
+  const resultado = ordenarArray(arr);
+
+  document.querySelector("#r19").textContent =
+    `Ascendente: ${resultado.asc.join(", ")} | Descendente: ${resultado.desc.join(", ")}`;
+});
+document.querySelector("#btn20").addEventListener("click", () => {
+  const arr = document.querySelector("#c20")
+    .value
+    .split(",")
+    .map(e => e.trim());
+
+ document.querySelector("#btn20").addEventListener("click", () => {
+  const arr = document.querySelector("#c20")
+    .value
+    .split(",")
+    .map(e => e.trim());
+
+  const resultado = eliminarDuplicados(arr);
+
+  document.querySelector("#r20").textContent =
+    `Sin duplicados: ${resultado.join(", ")}`;
+});
+document.querySelector("#btn21").addEventListener("click", () => {
+  const arr = convertirArrayNumeros(
+    document.querySelector("#c21").value
+  );
+
+  document.querySelector("#r21").textContent =
+    `Promedio: ${promedio(arr)}`;
+});})

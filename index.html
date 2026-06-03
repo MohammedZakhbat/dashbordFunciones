@@ -1,160 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./output.css">
-    <title>Dashbord Funciones</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./output.css">
+  <title>Dashboard Funciones JS</title>
 </head>
+
 <body class="bg-slate-950 text-white min-h-screen overflow-x-hidden">
 
-  <div class="fixed top-0 left-0 w-[500px] h-[500px] bg-cyan-500/20 blur-3xl rounded-full"></div>
-  <div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/20 blur-3xl rounded-full"></div>
+  <!-- background -->
+  <div class="fixed top-0 left-0 w-[500px] h-[500px] bg-cyan-500/20 blur-3xl rounded-full pointer-events-none -z-10"></div>
+
+<div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/20 blur-3xl rounded-full pointer-events-none -z-10"></div>
 
   <div class="flex">
 
+    <!-- sidebar -->
     <aside class="hidden lg:flex flex-col w-72 min-h-screen bg-white/5 backdrop-blur-xl border-r border-white/10 p-8">
-
       <h1 class="text-5xl font-black bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
         JS PRO
       </h1>
 
-      <p class="text-slate-400 mt-3">
-        Dashboard moderno JavaScript
-      </p>
+      <p class="text-slate-400 mt-3">Repaso Funciones JS</p>
 
       <div class="mt-10 space-y-5">
-
         <div class="bg-white/5 border border-white/10 rounded-3xl p-5">
           <p class="text-slate-400 text-sm">Funciones</p>
           <h2 class="text-5xl font-black">21</h2>
         </div>
-
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-5">
-          <p class="text-slate-400 text-sm">Framework</p>
-          <h2 class="text-2xl font-bold">TailwindCSS</h2>
-        </div>
-
       </div>
-
     </aside>
 
-    <main class="flex-1 p-6 lg:p-10">
+    <!-- main -->
+   <main class="relative z-10 flex-1 p-6 lg:p-10">
 
+      <!-- header -->
       <section class="mb-10">
-
         <div class="relative overflow-hidden rounded-[35px] border border-white/10 bg-white/5 backdrop-blur-xl p-10">
-
-          <div class="absolute top-0 right-0 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl"></div>
-
-          <h2 class="text-5xl lg:text-7xl font-black leading-tight">
-            Dashboard
-            <span class="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-              JavaScript
-            </span>
+          <h2 class="text-5xl lg:text-7xl font-black">
+            Dashboard <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">JavaScript</span>
           </h2>
-
-          <p class="text-slate-400 mt-5 text-lg max-w-2xl">
-            21 funciones JavaScript con un diseño moderno y futurista.
-          </p>
-
         </div>
-
       </section>
 
+      <!-- grid -->
       <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-        <!-- CARD -->
-        <script>
-          const cardClass = "bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6";
-          const inputClass = "w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3";
-          const buttonClass = "w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition";
-          const resultClass = "mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center";
-        </script>
-
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6">
-          <h3 class="text-xl font-bold">1. Contar caracteres</h3>
-          <input id="c1" placeholder="Texto..." class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3">
-          <button onclick="run1()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Ejecutar</button>
-          <p id="r1" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p>
+        <!-- 1 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>1. Contar caracteres</h3>
+          <input id="c1" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn1" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Ejecutar</button>
+          <p id="r1" class="mt-3"></p>
         </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6">
-          <h3 class="text-xl font-bold">2. Recortar texto</h3>
-          <input id="c2" placeholder="Texto..." class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3">
-          <input id="c2n" type="number" placeholder="Número..." class="w-full mt-3 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3">
-          <button onclick="run2()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Ejecutar</button>
-          <p id="r2" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p>
+        <!-- 2 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>2. Recortar texto</h3>
+          <input id="c2" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <input id="c2n" type="number" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn2" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Ejecutar</button>
+          <p id="r2" class="mt-3"></p>
         </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6">
-          <h3 class="text-xl font-bold">3. Palíndromo</h3>
-          <input id="c3" placeholder="radar" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3">
-          <button onclick="run3()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Verificar</button>
-          <p id="r3" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p>
+        <!-- 3 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>3. Separar texto</h3>
+          <input id="c3" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <input id="c3s" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn3" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Separar</button>
+          <p id="r3" class="mt-3"></p>
         </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6">
-          <h3 class="text-xl font-bold">4. Validar email</h3>
-          <input id="c4" placeholder="correo@gmail.com" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3">
-          <button onclick="run4()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Validar</button>
-          <p id="r4" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p>
+        <!-- 4 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>4. Repetir texto</h3>
+          <input id="c4" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <input id="c4n" type="number" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn4" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Repetir</button>
+          <p id="r4" class="mt-3"></p>
         </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6">
-          <h3 class="text-xl font-bold">5. Número aleatorio</h3>
-          <button onclick="run5()" class="w-full mt-10 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Generar</button>
-          <p id="r5" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p>
+        <!-- 5 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>5. Invertir texto</h3>
+          <input id="c5" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn5" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Invertir</button>
+          <p id="r5" class="mt-3"></p>
         </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6">
-          <h3 class="text-xl font-bold">6. Convertir temperatura</h3>
-          <input id="c6" placeholder="Temperatura" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3">
-          <select id="c6t" class="w-full mt-3 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3">
+        <!-- 6 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>6. Contar palabra</h3>
+          <input id="c6" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <input id="c6p" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn6" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Contar</button>
+          <p id="r6" class="mt-3"></p>
+        </div>
+
+        <!-- 7 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>7. Palíndromo</h3>
+          <input id="c7" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn7" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Verificar</button>
+          <p id="r7" class="mt-3"></p>
+        </div>
+
+        <!-- 8 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>8. Eliminar patrón</h3>
+          <input id="c8" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <input id="c8p" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn8" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Eliminar</button>
+          <p id="r8" class="mt-3"></p>
+        </div>
+
+        <!-- 9 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>9. Aleatorio 501-600</h3>
+          <button id="btn9" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Generar</button>
+          <p id="r9" class="mt-3"></p>
+        </div>
+
+        <!-- 10 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>10. Celsius ↔ Fahrenheit</h3>
+          <input id="c10" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <select id="c10t" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
             <option value="C">C → F</option>
             <option value="F">F → C</option>
           </select>
-          <button onclick="run6()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Convertir</button>
-          <p id="r6" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p>
+          <button id="btn10" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Convertir</button>
+          <p id="r10" class="mt-3"></p>
         </div>
 
-        <!-- 7 → 21 -->
+        <!-- 11 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>11. Binario ↔ Decimal</h3>
+          <input id="c11" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn11" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Convertir</button>
+          <p id="r11" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">7. Invertir texto</h3><input id="c7" placeholder="Hola" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run7()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Invertir</button><p id="r7" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 12 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>12. Calcular años</h3>
+          <input id="c12" type="date" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn12" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Calcular</button>
+          <p id="r12" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">8. Contar palabra</h3><input id="c8" placeholder="Texto..." class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><input id="c8p" placeholder="Palabra..." class="w-full mt-3 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run8()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Contar</button><p id="r8" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 13 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>13. Vocales y consonantes</h3>
+          <input id="c13" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn13" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Analizar</button>
+          <p id="r13" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">9. Eliminar patrón</h3><input id="c9" placeholder="Texto..." class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><input id="c9p" placeholder="Patrón..." class="w-full mt-3 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run9()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Eliminar</button><p id="r9" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 14 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>14. Validar nombre</h3>
+          <input id="c14" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn14" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Validar</button>
+          <p id="r14" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">10. Binario a decimal</h3><input id="c10" placeholder="1010" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run10()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Convertir</button><p id="r10" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 15 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>15. Validar email</h3>
+          <input id="c15" class="w-full mt-3 p-3 rounded-xl bg-slate-900">
+          <button id="btn15" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Validar</button>
+          <p id="r15" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">11. Calcular años</h3><input id="c11" type="date" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run11()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Calcular</button><p id="r11" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 16 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>16. Cuadrado array</h3>
+          <input id="c16" class="w-full mt-3 p-3 rounded-xl bg-slate-900" placeholder="1,5,8">
+          <button id="btn16" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Calcular</button>
+          <p id="r16" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">12. Vocales y consonantes</h3><input id="c12" placeholder="Texto..." class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run12()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Analizar</button><p id="r12" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 17 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>17. Mayor y menor</h3>
+          <input id="c17" class="w-full mt-3 p-3 rounded-xl bg-slate-900" placeholder="1,5,8">
+          <button id="btn17" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Buscar</button>
+          <p id="r17" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">13. Validar nombre</h3><input id="c13" placeholder="Nombre..." class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run13()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Validar</button><p id="r13" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 18 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>18. Pares e impares</h3>
+          <input id="c18" class="w-full mt-3 p-3 rounded-xl bg-slate-900"  placeholder="1,5,8">
+          <button id="btn18" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Analizar</button>
+          <p id="r18" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">14. Elevar al cuadrado</h3><input id="c14" placeholder="1,2,3" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run14()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Calcular</button><p id="r14" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 19 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>19. Ordenar arreglo</h3>
+          <input id="c19" class="w-full mt-3 p-3 rounded-xl bg-slate-900"  placeholder="1,4,9,5,8">
+          <button id="btn19" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Ordenar</button>
+          <p id="r19" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">15. Mayor y menor</h3><input id="c15" placeholder="1,2,3" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run15()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Buscar</button><p id="r15" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 20 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>20. Eliminar duplicados</h3>
+          <input id="c20" class="w-full mt-3 p-3 rounded-xl bg-slate-900" placeholder="1,X,99,7,Z">
+          <button id="btn20" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Eliminar</button>
+          <p id="r20" class="mt-3"></p>
+        </div>
 
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">16. Pares e impares</h3><input id="c16" placeholder="1,2,3" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run16()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Analizar</button><p id="r16" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
-
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">17. Ordenar array</h3><input id="c17" placeholder="4,1,7" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run17()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Ordenar</button><p id="r17" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
-
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">18. Eliminar duplicados</h3><input id="c18" placeholder="1,1,2,2" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run18()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Eliminar</button><p id="r18" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
-
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">19. Promedio</h3><input id="c19" placeholder="1,2,3" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run19()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Calcular</button><p id="r19" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
-
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">20. Repetir texto</h3><input id="c20" placeholder="Hola" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><input id="c20n" type="number" placeholder="Cantidad" class="w-full mt-3 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run20()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Repetir</button><p id="r20" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
-
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6"><h3 class="text-xl font-bold">21. Separar texto</h3><input id="c21" placeholder="Hola mundo JS" class="w-full mt-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-3"><button onclick="run21()" class="w-full mt-4 py-3 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-[1.02] transition">Separar</button><p id="r21" class="mt-4 bg-slate-900/80 rounded-2xl p-4 text-cyan-300 min-h-[60px] flex items-center"></p></div>
+        <!-- 21 -->
+        <div class="bg-white/5 p-6 rounded-3xl border border-white/10">
+          <h3>21. Promedio</h3>
+          <input id="c21" class="w-full mt-3 p-3 rounded-xl bg-slate-900" placeholder="1,2,3,4,5">
+          <button id="btn21" class="w-full mt-3 p-3 bg-cyan-600 rounded-xl">Calcular</button>
+          <p id="r21" class="mt-3"></p>
+        </div>
 
       </section>
-
     </main>
 
   </div>
-    <script src="app.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>
